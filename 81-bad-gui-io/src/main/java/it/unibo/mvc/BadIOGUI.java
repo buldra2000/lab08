@@ -47,6 +47,19 @@ public class BadIOGUI {
         /*
          * Handlers
          */
+        final JPanel panel = new JPanel();
+        final JButton read = new JButton("read");
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        canvas.add(panel , BorderLayout.CENTER);
+        panel.add(write);
+        panel.add(read);
+        read.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e ) {
+                System.out.println("read button was pressed");
+            }
+        });
+
+
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
@@ -76,10 +89,16 @@ public class BadIOGUI {
          * issue). It is MUCH better than manually specify the size of a window
          * in pixel: it takes into account the current resolution.
          */
+        
+
+
+
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
         frame.setSize(sw / PROPORTION, sh / PROPORTION);
+
+        frame.pack();
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
