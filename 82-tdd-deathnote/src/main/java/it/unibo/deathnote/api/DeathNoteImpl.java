@@ -2,11 +2,6 @@ package it.unibo.deathnote.api;
 
 public class DeathNoteImpl implements DeathNote{
 
-    String name;
-    int ruleNumber;
-    String cause;
-    String details;
-
     @Override
     public String getDeathCause(String name) {
         throw new IllegalArgumentException("Error");
