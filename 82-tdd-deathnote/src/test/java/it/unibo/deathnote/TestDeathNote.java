@@ -36,4 +36,27 @@ class TestDeathNote {
         assertFalse(e.getMessage().isBlank(), "Not Exist Negative Rules");
         }
     }
+
+    @Test
+    public void writeNameBlank(){
+        DeathNote note = new DeathNoteImpl();
+
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
+            note.writeName("");
+        });
+
+        assertFalse(e.getMessage().isEmpty(), "Message Empty");
+        assertFalse(e.getMessage().isBlank(), "Invalid name");
+    }
+
+    @Test
+    public void DeathCauseNone() throws InterruptedException{
+        DeathNote note = new DeathNoteImpl();
+
+        note.writeName("Light Yagami");
+
+        Thread.sleep(50);
+
+        assertEquals("Heart attack", note.getDeathCause("Light Yagami"));
+    }
 }
